@@ -1,7 +1,4 @@
 #! /usr/bin/node
-import userName from "../index.js"
+import { userName } from '..';
 
 userName();
-
-
-
