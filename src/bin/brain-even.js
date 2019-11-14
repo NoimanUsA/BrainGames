@@ -1,4 +1,7 @@
 #! /usr/bin/node
-import { even } from '../index';
+import { brainEven } from '../index';
 
-even();
+console.log('Welcome to Brain the Games! \n'
+    + 'Answer "yes" if the number is even, otherwise answer "no" ');
+
+brainEven();
