@@ -6,3 +6,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/36fd92089ef9f10b0872/test_coverage)](https://codeclimate.com/github/NoimanUs/frontend-project-lvl1/test_coverage)
 
 [![Build Status](https://travis-ci.org/NoimanUs/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/NoimanUs/frontend-project-lvl1)
+
+
+[![asciicast](https://asciinema.org/a/9aBPZmvm32YlfPmATydBrFTFp.svg)](https://asciinema.org/a/9aBPZmvm32YlfPmATydBrFTFp)
