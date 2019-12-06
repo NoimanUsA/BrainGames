@@ -1,36 +1,71 @@
 import readlineSync from 'readline-sync';
 
-
-const userName = () => {
+const greeting = (text = '') => {
+  console.log(`Welcome to Brain the Games!\n${text}\n`)
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}! \n`);
   return name;
-};
+}
 
-const brainEven = () => {
-  const name = userName();
+const makeRandNum = (maxNum) => {
+  return Math.floor(Math.random() * maxNum + 1);
+}
 
-  const iter = (count) => {
-    if (count === 3) {
-      console.log(`Congratulations, ${name}!`);
-      return true;
-    }
+const setAnswer = () => {
+  const answer = readlineSync.question('Your answer: ');
+  return answer;
+}
 
-    const num = Math.floor(Math.random() * 100 + 1);
-    console.log(`Question: ${num}`);
-    const answer = readlineSync.question('Your answer: ');
-    const rigthAnswer = num % 2 === 0 ? 'yes' : 'no';
-
-    if (answer !== rigthAnswer) {
-      console.log(`'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \n` + `Let's try again, ${name}`);
-      return false;
-    }
-
-    console.log('Correct!');
-    return iter(count + 1);
+const calc = (sign, nums) => {
+  let rigthAnswer;
+  switch (sign) {
+    case '+':
+      rigthAnswer = nums[0] + nums[1];
+      break;
+    case '*':
+      rigthAnswer = nums[0] * nums[1];
+      break
+    case '-':
+      rigthAnswer = nums[0] - nums[1];
+      break;
   };
 
-  iter(0);
+  return rigthAnswer;
+}
+
+const findGCD = (a, b) => {
+  if (b === 0) {
+    return a;
+  }
+  return findGCD(b, a % b);
 };
 
-export { userName, brainEven };
+
+const makeProgress = (count) => {
+  const startNum = makeRandNum(10);
+  const progressNum = makeRandNum(10);
+  const progressArr = [startNum];
+  for (let i = 0; i < count; i++) {
+    progressArr.push(progressArr[i] + progressNum);
+  }
+
+  return progressArr;
+
+}
+
+const isPrime = (num) => {
+  if (num === 1) {
+    return 'no';
+  } else if (num === 2) {
+    return 'yes';
+  }
+
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return 'no'
+    };
+  };
+  return 'yes';
+};
+
+export { greeting, makeRandNum, setAnswer, calc, findGCD, makeProgress, isPrime };
