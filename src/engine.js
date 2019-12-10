@@ -1,21 +1,23 @@
-import { setAnswer } from './index';
+import readlineSync from 'readline-sync';
 
-const engine = (setRightAnswer, name, count = 0) => {
-    if (count === 3) {
-        console.log(`Congratulations, ${name}!`);
-        return true;
-    }
+const engine = (data, name, count = 0) => {
+  if (count === 3) {
+    console.log(`Congratulations, ${name}!`);
+    return true;
+  }
 
-    const rigthAnswer = String(setRightAnswer());
-    const answer = setAnswer();
+  const answerData = data();
+  const rigthAnswer = String(answerData[0]);
+  console.log(`Question : ${answerData[1]}`);
+  const answer = readlineSync.question('Your answer: ');
 
-    if (answer !== rigthAnswer) {
-        console.log(`'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \n` + `Let's try again, ${name}`);
-        return false;
-    };
+  if (answer !== rigthAnswer) {
+    console.log(`'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \nLet's try again, ${name}`);
+    return false;
+  }
 
-    console.log('Correct!');
-    return engine(setRightAnswer, name, count + 1);
+  console.log('Correct!');
+  return engine(data, name, count + 1);
 };
 
-export { engine };
+export default engine;
