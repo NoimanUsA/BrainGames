@@ -1,23 +1,29 @@
 import readlineSync from 'readline-sync';
+import { greeting } from './index';
 
-const engine = (data, name, count = 0) => {
-  if (count === 3) {
-    console.log(`Congratulations, ${name}!`);
-    return true;
-  }
+const engine = (greetText, gameCounter) => {
+  const name = greeting(greetText);
 
-  const answerData = data();
-  const rigthAnswer = String(answerData[0]);
-  console.log(`Question : ${answerData[1]}`);
-  const answer = readlineSync.question('Your answer: ');
+  const iter = (gameData, iterCounter = 0) => {
+    if (iterCounter === gameCounter) {
+      console.log(`Congratulations, ${name}!`);
+      return true;
+    }
 
-  if (answer !== rigthAnswer) {
-    console.log(`'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \nLet's try again, ${name}`);
-    return false;
-  }
+    const answerData = gameData();
+    const rigthAnswer = answerData[0];
+    console.log(`Question : ${answerData[1]}`);
+    const answer = readlineSync.question('Your answer: ');
 
-  console.log('Correct!');
-  return engine(data, name, count + 1);
+    if (answer !== rigthAnswer) {
+      console.log(`\n'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \nLet's try again, ${name}`);
+      return false;
+    }
+
+    console.log('Correct!\n');
+    return iter(gameData, iterCounter + 1);
+  };
+  return iter;
 };
 
 export default engine;
