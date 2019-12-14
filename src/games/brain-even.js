@@ -1,24 +1,21 @@
-import { greeting, makeRandNum } from '../index';
+import { makeRandNum } from '../index';
 import engine from '../engine';
 
 
-const isEven = (num) => {
-  if (num % 2 === 0) {
-    return true;
-  }
-  return false;
-};
+const isEven = (num) => num % 2 === 0;
 
-const answerData = () => {
+const gameData = () => {
   const num = makeRandNum(500);
-  const question = `${num}`;
   const rigthAnswer = isEven(num) ? 'yes' : 'no';
-  return [rigthAnswer, question];
+
+  return [rigthAnswer, num];
 };
 
 const startBrainEven = () => {
-  const name = greeting('Answer "yes" if the number is even, otherwise answer "no"');
-  return engine(answerData, name);
+  const greeting = 'Answer "yes" if the number is even, otherwise answer "no"';
+  const gameCounter = 3;
+
+  return engine(greeting, gameCounter)(gameData);
 };
 
 export default startBrainEven;

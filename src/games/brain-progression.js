@@ -1,4 +1,4 @@
-import { greeting, makeRandNum } from '../index';
+import { makeRandNum } from '../index';
 import engine from '../engine';
 
 const makeProgress = (count) => {
@@ -12,19 +12,21 @@ const makeProgress = (count) => {
   return progressArr;
 };
 
-const answerData = () => {
+const gameData = () => {
   const arr = makeProgress(10);
   const switchedIndex = makeRandNum(arr.length - 2);
-  const rigthAnswer = arr[switchedIndex];
+  const rigthAnswer = `${arr[switchedIndex]}`;
   arr[switchedIndex] = '...';
-  const question = `${arr.join(' ')}`;
-  return [rigthAnswer, question];
+  const questionText = arr.join(' ');
+
+  return [rigthAnswer, questionText];
 };
 
 const startBrainProgression = () => {
-  const name = greeting('What number is missing in the progression?');
+  const greeting = 'What number is missing in the progression?';
+  const gameCounter = 3;
 
-  return engine(answerData, name);
+  return engine(greeting, gameCounter)(gameData);
 };
 
 export default startBrainProgression;
