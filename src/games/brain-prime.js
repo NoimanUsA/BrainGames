@@ -1,15 +1,15 @@
-import { makeRandNum } from '../index';
+import makeRandNum from '../utils';
 import engine from '../engine';
 
 const isPrime = (num) => {
-  if (num === 1) {
+  if (num <= 1) {
     return false;
   } if (num === 2) {
     return true;
   }
 
   let i = 2;
-  while (i < num) {
+  while (i < (num / 2)) {
     if (num % i === 0) {
       return false;
     }
@@ -19,17 +19,16 @@ const isPrime = (num) => {
   return true;
 };
 
+const minNum = 1;
+const maxNum = 409;
 const gameData = () => {
-  const num = makeRandNum(409);
-  const rigthAnswer = isPrime(num) ? 'yes' : 'no';
+  const question = makeRandNum(minNum, maxNum);
+  const rigthAnswer = isPrime(question) ? 'yes' : 'no';
 
-  return [rigthAnswer, num];
+  return [rigthAnswer, question];
 };
 
-const startBrainPrime = () => {
-  const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const gameCounter = 3;
-  return engine(greeting, gameCounter)(gameData);
-};
+const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const startBrainPrime = () => engine(greeting)(gameData);
 
 export default startBrainPrime;

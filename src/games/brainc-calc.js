@@ -1,4 +1,4 @@
-import { makeRandNum } from '../index';
+import makeRandNum from '../utils';
 import engine from '../engine';
 
 
@@ -21,22 +21,20 @@ const calc = (sign, num1, num2) => {
 };
 
 const signs = ['+', '-', '*'];
+const minNum = 1;
+const maxNum = 25;
 const gameData = () => {
-  const sign = signs[makeRandNum(signs.length - 1)];
-  const num1 = makeRandNum(25);
-  const num2 = makeRandNum(25);
-  const questionText = `${num1} ${sign} ${num2}`;
-  const rigthAnswer = `${calc(sign, num1, num2)}`;
+  const sign = signs[makeRandNum(0, signs.length - 1)];
+  const firstNum = makeRandNum(minNum, maxNum);
+  const secondNum = makeRandNum(minNum, maxNum);
+  const questionText = `${firstNum} ${sign} ${secondNum}`;
+  const rigthAnswer = String(calc(sign, firstNum, secondNum));
 
   return [rigthAnswer, questionText];
 };
 
 
-const startBrainCalc = () => {
-  const greeting = 'What is the result of the expression?';
-  const gameCounter = 3;
-
-  return engine(greeting, gameCounter)(gameData);
-};
+const greeting = 'What is the result of the expression?';
+const startBrainCalc = () => engine(greeting)(gameData);
 
 export default startBrainCalc;

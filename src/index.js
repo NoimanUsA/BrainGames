@@ -7,7 +7,5 @@ const greeting = (text = '') => {
   return name;
 };
 
-const makeRandNum = (maxNum) => Math.floor(Math.random() * maxNum + 1);
 
-
-export { greeting, makeRandNum };
+export default greeting;

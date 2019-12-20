@@ -1,8 +1,9 @@
 import readlineSync from 'readline-sync';
-import { greeting } from './index';
+import greeting from '.';
 
-const engine = (greetText, gameCounter) => {
+const engine = (greetText) => {
   const name = greeting(greetText);
+  const gameCounter = 3;
 
   const iter = (gameData, iterCounter = 0) => {
     if (iterCounter === gameCounter) {
@@ -16,7 +17,8 @@ const engine = (greetText, gameCounter) => {
     const answer = readlineSync.question('Your answer: ');
 
     if (answer !== rigthAnswer) {
-      console.log(`\n'${answer}' is wrong answer, corrent answer was '${rigthAnswer}' \nLet's try again, ${name}`);
+      console.log(`\n'${answer}' is wrong answer, corrent answer was '${rigthAnswer}'`);
+      console.log(`Let's try again, ${name}`);
       return false;
     }
 
