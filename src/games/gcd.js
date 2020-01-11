@@ -1,5 +1,4 @@
-
-import makeRandNum from '../utils';
+import makeRandomNumber from '../utils';
 import engine from '../engine';
 
 const findGCD = (a, b) => {
@@ -11,16 +10,16 @@ const findGCD = (a, b) => {
 
 const minNum = 1;
 const maxNum = 25;
-const gameData = () => {
-  const firstNum = makeRandNum(minNum, maxNum);
-  const secondNum = makeRandNum(minNum, maxNum);
-  const questionText = `${firstNum} ${secondNum}`;
+const getGameData = () => {
+  const firstNum = makeRandomNumber(minNum, maxNum);
+  const secondNum = makeRandomNumber(minNum, maxNum);
+  const question = `${firstNum} ${secondNum}`;
   const rightAnswer = String(findGCD(firstNum, secondNum));
 
-  return [rightAnswer, questionText];
+  return [rightAnswer, question];
 };
 
 const greeting = 'Find the greatest common divisor of given numbers';
-const startBrainGCD = () => engine(greeting)(gameData);
+const startBrainGCD = () => engine(greeting, getGameData);
 
 export default startBrainGCD;

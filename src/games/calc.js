@@ -1,6 +1,5 @@
-import makeRandNum from '../utils';
+import makeRandomNumber from '../utils';
 import engine from '../engine';
-
 
 const calc = (sign, num1, num2) => {
   let rigthAnswer;
@@ -23,18 +22,17 @@ const calc = (sign, num1, num2) => {
 const signs = ['+', '-', '*'];
 const minNum = 1;
 const maxNum = 25;
-const gameData = () => {
-  const sign = signs[makeRandNum(0, signs.length - 1)];
-  const firstNum = makeRandNum(minNum, maxNum);
-  const secondNum = makeRandNum(minNum, maxNum);
-  const questionText = `${firstNum} ${sign} ${secondNum}`;
+const getGameData = () => {
+  const sign = signs[makeRandomNumber(0, signs.length - 1)];
+  const firstNum = makeRandomNumber(minNum, maxNum);
+  const secondNum = makeRandomNumber(minNum, maxNum);
+  const question = `${firstNum} ${sign} ${secondNum}`;
   const rigthAnswer = String(calc(sign, firstNum, secondNum));
 
-  return [rigthAnswer, questionText];
+  return [rigthAnswer, question];
 };
 
-
 const greeting = 'What is the result of the expression?';
-const startBrainCalc = () => engine(greeting)(gameData);
+const startBrainCalc = () => engine(greeting, getGameData);
 
 export default startBrainCalc;

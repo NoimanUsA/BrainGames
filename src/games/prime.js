@@ -1,4 +1,4 @@
-import makeRandNum from '../utils';
+import makeRandomNumber from '../utils';
 import engine from '../engine';
 
 const isPrime = (num) => {
@@ -21,14 +21,14 @@ const isPrime = (num) => {
 
 const minNum = 1;
 const maxNum = 409;
-const gameData = () => {
-  const question = makeRandNum(minNum, maxNum);
+const getGameData = () => {
+  const question = makeRandomNumber(minNum, maxNum);
   const rigthAnswer = isPrime(question) ? 'yes' : 'no';
 
   return [rigthAnswer, question];
 };
 
 const greeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const startBrainPrime = () => engine(greeting)(gameData);
+const startBrainPrime = () => engine(greeting, getGameData);
 
 export default startBrainPrime;
