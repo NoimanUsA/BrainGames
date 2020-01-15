@@ -1,18 +1,19 @@
 import readlineSync from 'readline-sync';
 
-const gameCount = 3;
-const engine = (greetText, gameData) => {
-  console.log(`Welcome to Brain the Games!\n${greetText}\n`);
+const gamesCount = 3;
+const engine = (gameDescription, getGameData) => {
+  console.log('Welcome to Brain the Games!\n');
+  console.log(`${gameDescription}\n`);
   const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}! \n`);
+  console.log(`Hello, ${name}!\n`);
 
-  const iter = (iterCount = 0) => {
-    if (iterCount === gameCount) {
+  const iter = (iterCount) => {
+    if (iterCount === gamesCount) {
       console.log(`Congratulations, ${name}!`);
       return true;
     }
 
-    const [rigthAnswer, question] = gameData();
+    const [rigthAnswer, question] = getGameData();
     console.log(`Question : ${question}`);
     const answer = readlineSync.question('Your answer: ');
 
@@ -23,9 +24,9 @@ const engine = (greetText, gameData) => {
     }
 
     console.log('Correct!\n');
-    return iter(iterCount + 1);
+    return iter(iterCount);
   };
-  return iter();
+  return iter(0);
 };
 
 export default engine;
