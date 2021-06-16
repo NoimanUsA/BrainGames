@@ -1,9 +1,4 @@
-# frontend-project-lvl1
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/36fd92089ef9f10b0872/maintainability)](https://codeclimate.com/github/NoimanUs/frontend-project-lvl1/maintainability)
-
-[![Build Status](https://travis-ci.org/NoimanUs/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/NoimanUs/frontend-project-lvl1)
-
+# BrainGames
 
 ### Установка
 Открыть терминал в папке игры и ввести "npm link".
